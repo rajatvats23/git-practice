@@ -1,0 +1,69 @@
+Day 1 Git - Complete Notes
+Setup (One-time):
+bashgit config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+git config --global --list  # Verify
+
+Config is LOCAL to machine, not GitHub
+--global = all repos, without = current repo only
+
+Basic Workflow:
+bashgit init                    # Initialize repo (creates .git folder)
+git status                  # Check file states
+git add <file>              # Stage file (Working → Staging)
+git commit -m "message"     # Save snapshot (Staging → Repository)
+git log                     # View history
+git log --oneline           # Compact history
+3 Areas:
+
+Working Directory = your files now
+Staging Area = files ready for snapshot
+Repository = saved commits
+
+Commits:
+
+Each commit = unique hash (e.g., f376db4)
+Commit ID used for: revert, checkout, show
+git show <hash> = view specific commit
+
+Branches:
+bashgit branch <name>           # Create branch (copies from current position)
+git branch                  # List branches (* = current)
+git checkout <name>         # Switch branch
+git checkout -b <name>      # Create + switch
+git merge <branch>          # Merge INTO current branch
+
+Branch = separate timeline from current position
+Merging is directional: you're ON branch X, pulling FROM branch Y
+
+HEAD:
+
+Pointer to current position (branch + commit)
+HEAD -> master = on master branch, at latest commit
+Detached HEAD = pointing to old commit directly (not a branch)
+
+Merge Conflicts:
+
+Happen when same line edited in both branches
+Resolution: edit file → git add → git commit
+Conflict markers: <<<<<<< HEAD, =======, >>>>>>> branch
+
+Remote (GitHub):
+bashgit remote add origin <url>      # Add remote, nickname it 'origin'
+git remote -v                    # List remotes
+git push -u origin master        # Upload to GitHub (first time)
+git push                         # Upload (after -u set)
+git pull origin master           # Download from GitHub
+git clone <url>                  # Download repo (auto-creates origin)
+
+origin = nickname for remote URL (can be any name)
+Git works 100% offline, GitHub optional
+Local and remote independent, sync with push/pull
+
+Key Concepts:
+
+Git = local version control, works offline
+GitHub = remote backup/collaboration (optional)
+Branches cheap, create liberally
+Commits are snapshots, not diffs
+HEAD = "You Are Here" marker
